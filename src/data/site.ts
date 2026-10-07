@@ -15,7 +15,7 @@ export const practice = {
     state: 'AZ',
     zip: '85225',
   },
-  phone: { display: '602-858-5158', href: 'tel:+16028585158' },
+  phone: { display: '602-858-5182', href: 'tel:+16028585182' },
   cell: { display: '602-520-2266', href: 'tel:+16025202266' },
   fax: { display: '602-858-5187', href: 'fax:+16028585187' },
   email: 'customers@nexus-healthandwellness.com',

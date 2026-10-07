@@ -322,8 +322,8 @@ main:focus {
 }
 
 .brand-logo {
-  width: 52px;
-  height: 52px;
+  width: 64px;
+  height: 64px;
   flex-shrink: 0;
 }
 
@@ -444,16 +444,21 @@ main:focus {
 
 @media (max-width: 480px) {
   .brand-logo {
-    width: 44px;
-    height: 44px;
+    width: 52px;
+    height: 52px;
   }
 
   .brand-name {
     font-size: 1.05rem;
   }
 
+  .brand {
+    gap: 10px;
+  }
+
   .brand-tag {
-    font-size: 0.7rem;
+    font-size: 0.66rem;
+    letter-spacing: 0;
   }
 }
 
@@ -475,8 +480,17 @@ main:focus {
   align-items: center;
 }
 
+.hero-copy {
+  /* Lets the heading size itself to this column's width (cqi units below). */
+  container-type: inline-size;
+}
+
 .hero-copy h1 {
   margin-bottom: 0.4em;
+  /* Always one line: the size scales with the column so it never wraps. */
+  white-space: nowrap;
+  /* The text is ~13em wide, so 7.3cqi fills about 95% of the column. */
+  font-size: clamp(1.25rem, 7.3cqi, 3.2rem);
 }
 
 .hero-actions {
@@ -556,54 +570,70 @@ main:focus {
   }
 }
 
-/* ---------- Trust strip ---------- */
-.trust {
-  background: var(--navy-900);
-  color: #fff;
+/* ---------- Photo carousel (rolls to the right) ---------- */
+.story {
+  --story-gap: 16px;
+  overflow: hidden;
+  padding-block: clamp(20px, 3vw, 32px);
+  /* Photos fade in and out at the edges instead of being cut off sharply. */
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
 }
 
-.trust-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px 24px;
-  padding-block: 26px;
-}
-
-.trust-item {
+.story-track {
   display: flex;
-  align-items: center;
-  gap: 14px;
+  width: max-content;
+  animation: story-roll 60s linear infinite;
 }
 
-.trust-icon {
-  flex-shrink: 0;
-  width: 34px;
-  height: 34px;
-  color: var(--green-300);
+/* Pause while the visitor hovers over a photo, so they can look at it. */
+.story:hover .story-track {
+  animation-play-state: paused;
 }
 
-.trust-title {
+.story-set {
+  display: flex;
+  gap: var(--story-gap);
+  /* Trailing gap so the two copies join seamlessly. */
+  padding: 0 var(--story-gap) 0 0;
   margin: 0;
-  font-weight: 700;
-  line-height: 1.3;
+  list-style: none;
 }
 
-.trust-text {
-  margin: 0;
-  font-size: 0.92rem;
-  color: #bfd0e2;
+.story-set img {
+  width: clamp(240px, 30vw, 420px);
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
 }
 
-@media (max-width: 900px) {
-  .trust-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+/* The track holds the photos twice; moving it from -50% to 0 slides the
+   first copy exactly onto the second, so the loop never jumps. */
+@keyframes story-roll {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
   }
 }
 
-@media (max-width: 440px) {
-  .trust-grid {
-    grid-template-columns: 1fr;
+/* Visitors who turn off motion get a still row they can swipe through. */
+@media (prefers-reduced-motion: reduce) {
+  .story {
+    overflow-x: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .story-track {
+    animation: none;
+    padding-inline: var(--gutter);
+  }
+
+  .story-set[aria-hidden='true'] {
+    display: none;
   }
 }
 

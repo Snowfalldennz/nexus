@@ -4,28 +4,18 @@ import {
   BedDouble,
   Building2,
   CircleCheck,
-  Clock,
-  House,
   Hospital,
   Phone,
-  ShieldCheck,
-  Stethoscope,
   UserRound,
 } from 'lucide-react'
 import nurseVisit from '../assets/nurse-visit.webp'
 import caringHands from '../assets/caring-hands.webp'
 import logo from '../assets/logo.png'
 import { CallToAction } from '../components/CallToAction'
+import { PhotoCarousel } from '../components/PhotoCarousel'
 import { serviceIcons } from '../components/icons'
 import { practice, services, whoWeServe, whyPartner } from '../data/site'
 import { usePageMeta } from '../hooks/usePageMeta'
-
-const trust = [
-  { icon: Clock, title: 'Orders in 24–48 hrs', text: 'Fast order turnaround' },
-  { icon: ShieldCheck, title: 'Medicare accepted', text: 'Plus multiple private plans' },
-  { icon: Stethoscope, title: 'Provider-led', text: 'Care led by an FNP-C' },
-  { icon: House, title: 'We come to you', text: 'House calls & clinic visits' },
-]
 
 const serveIcons = [BedDouble, Building2, Hospital]
 
@@ -76,19 +66,7 @@ export function Home() {
         </div>
       </section>
 
-      <section className="trust" aria-label="Why patients choose us">
-        <div className="container trust-grid">
-          {trust.map(({ icon: Icon, title, text }) => (
-            <div className="trust-item" key={title}>
-              <Icon className="trust-icon" aria-hidden="true" />
-              <div>
-                <p className="trust-title">{title}</p>
-                <p className="trust-text">{text}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+      <PhotoCarousel />
 
       <section className="section">
         <div className="container">
