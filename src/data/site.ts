@@ -4,7 +4,7 @@
 export const practice = {
   name: 'Nexus Health and Wellness',
   shortName: 'Nexus Health & Wellness',
-  tagline: 'Family Medicine • Primary Care • Wound Care',
+  tagline: 'Family Medicine & Wound Care',
   address: {
     street: '3002 N Arizona Ave, Ste 13',
     city: 'Chandler',
