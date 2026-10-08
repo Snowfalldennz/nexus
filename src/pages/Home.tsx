@@ -8,7 +8,7 @@ import {
   Phone,
   ShieldCheck,
 } from 'lucide-react'
-import heroGroup from '../assets/hero-group.webp'
+import heroWoundCare from '../assets/hero-wound-care.webp'
 import caringHands from '../assets/caring-hands.webp'
 import logo from '../assets/logo.png'
 import { CallToAction } from '../components/CallToAction'
@@ -50,10 +50,10 @@ export function Home() {
           </div>
           <div className="hero-media">
             <img
-              src={heroGroup}
-              alt="Two Nexus Health & Wellness nurses talking with an elderly patient in his living room"
-              width="1280"
-              height="720"
+              src={heroWoundCare}
+              alt="A nurse in green scrubs gently cleaning an elderly man’s leg wound"
+              width="1254"
+              height="1254"
             />
             <div className="hero-badge">
               <img src={logo} alt="" width="44" height="44" />

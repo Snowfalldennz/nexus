@@ -498,8 +498,9 @@ main:focus {
 
 .hero-media > img {
   width: 100%;
-  /* Wide enough for the group photo (16:9) to show all three people. */
-  aspect-ratio: 16 / 10;
+  /* The photo is square: show all of it, so the faces and the wound stay in
+     view and the badge only covers the supply tray in the corner. */
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   object-position: center;
   border-radius: var(--radius-lg);
@@ -551,9 +552,12 @@ main:focus {
     inset: 12px -10px -12px 10px;
   }
 
+  /* On small screens the badge would cover the wound and the nurse's hands,
+     so it sits under the photo instead of on top of it. */
   .hero-badge {
-    left: 12px;
-    bottom: 12px;
+    position: static;
+    max-width: none;
+    margin-top: 14px;
   }
 }
 
