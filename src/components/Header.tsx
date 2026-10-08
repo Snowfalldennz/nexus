@@ -30,7 +30,7 @@ export function Header() {
     <header className="site-header">
       <div className="container header-inner">
         <Link to="/" className="brand" aria-label={`${practice.name} — home`}>
-          <img src={logo} alt="" width="64" height="64" className="brand-logo" />
+          <img src={logo} alt="" width="76" height="76" className="brand-logo" />
           <span className="brand-text">
             <span className="brand-name">Nexus Health &amp; Wellness</span>
             <span className="brand-tag">{practice.tagline}</span>
