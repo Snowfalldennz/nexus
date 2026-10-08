@@ -22,6 +22,9 @@ export const practice = {
   website: 'www.nexus-healthandwellness.com',
 } as const
 
+// Partnering insurances, as given by the client (2026-10-08). More are pending application.
+export const insurances = ['Medicare', 'Aetna', 'TRICARE', 'Arizona Medicaid'] as const
+
 export const fullAddress = `${practice.address.street}, ${practice.address.city}, ${practice.address.state} ${practice.address.zip}`
 
 export const mapEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(fullAddress)}&output=embed`

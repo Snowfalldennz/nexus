@@ -6,15 +6,15 @@ import {
   CircleCheck,
   Hospital,
   Phone,
-  UserRound,
+  ShieldCheck,
 } from 'lucide-react'
-import nurseVisit from '../assets/nurse-visit.webp'
+import heroGroup from '../assets/hero-group.webp'
 import caringHands from '../assets/caring-hands.webp'
 import logo from '../assets/logo.png'
 import { CallToAction } from '../components/CallToAction'
 import { PhotoCarousel } from '../components/PhotoCarousel'
 import { serviceIcons } from '../components/icons'
-import { practice, services, whoWeServe, whyPartner } from '../data/site'
+import { insurances, practice, services, whoWeServe, whyPartner } from '../data/site'
 import { usePageMeta } from '../hooks/usePageMeta'
 
 const serveIcons = [BedDouble, Building2, Hospital]
@@ -50,10 +50,10 @@ export function Home() {
           </div>
           <div className="hero-media">
             <img
-              src={nurseVisit}
-              alt="A nurse in blue scrubs smiling with an elderly patient at home"
-              width="1199"
-              height="800"
+              src={heroGroup}
+              alt="Two Nexus Health & Wellness nurses talking with an elderly patient in his living room"
+              width="1280"
+              height="720"
             />
             <div className="hero-badge">
               <img src={logo} alt="" width="44" height="44" />
@@ -176,18 +176,16 @@ export function Home() {
 
       <section className="section">
         <div className="container">
-          <div className="provider-card">
-            <span className="provider-avatar" aria-hidden="true"><UserRound /></span>
+          <div className="provider-card insurance-card">
+            <span className="provider-avatar" aria-hidden="true"><ShieldCheck /></span>
             <div>
-              <p className="eyebrow">Meet your provider</p>
-              <h2>{practice.provider.name}, {practice.provider.credentials}</h2>
-              <p>
-                A board-certified Family Nurse Practitioner leading every patient’s care — from
-                house calls and chronic disease management to advanced wound treatment.
-              </p>
-              <Link to="/about" className="text-link">
-                About our practice <ArrowRight size={16} aria-hidden="true" />
-              </Link>
+              <h2>Partnering Insurances</h2>
+              <ul className="insurance-list">
+                {insurances.map((name) => (
+                  <li key={name}>{name}</li>
+                ))}
+              </ul>
+              <p>And more pending application.</p>
             </div>
           </div>
         </div>

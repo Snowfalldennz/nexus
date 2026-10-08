@@ -28,7 +28,7 @@
   --radius-lg: 22px;
   --shadow-sm: 0 1px 2px rgb(12 35 64 / 0.06), 0 2px 8px rgb(12 35 64 / 0.05);
   --shadow-md: 0 8px 28px rgb(12 35 64 / 0.1);
-  --header-h: 92px;
+  --header-h: 104px;
   --gutter: clamp(16px, 4vw, 32px);
 }
 
@@ -322,8 +322,8 @@ main:focus {
 }
 
 .brand-logo {
-  width: 76px;
-  height: 76px;
+  width: 88px;
+  height: 88px;
   flex-shrink: 0;
 }
 
@@ -336,13 +336,13 @@ main:focus {
 .brand-name {
   font-family: var(--font-serif);
   font-weight: 700;
-  font-size: 1.25rem;
+  font-size: 1.75rem;
   color: var(--navy-900);
   line-height: 1.15;
 }
 
 .brand-tag {
-  font-size: 0.78rem;
+  font-size: 0.92rem;
   color: var(--muted);
   letter-spacing: 0.02em;
   white-space: nowrap;
@@ -397,7 +397,8 @@ main:focus {
   cursor: pointer;
 }
 
-@media (max-width: 1080px) {
+/* Below this width the bigger brand and the full menu no longer fit side by side. */
+@media (max-width: 1200px) {
   .menu-toggle {
     display: inline-flex;
   }
@@ -444,12 +445,12 @@ main:focus {
 
 @media (max-width: 480px) {
   .brand-logo {
-    width: 60px;
-    height: 60px;
+    width: 64px;
+    height: 64px;
   }
 
   .brand-name {
-    font-size: 1.05rem;
+    font-size: 1.15rem;
   }
 
   .brand {
@@ -489,8 +490,8 @@ main:focus {
   margin-bottom: 0.4em;
   /* Always one line: the size scales with the column so it never wraps. */
   white-space: nowrap;
-  /* The text is ~13em wide, so 7.3cqi fills about 95% of the column. */
-  font-size: clamp(1.25rem, 7.3cqi, 3.2rem);
+  /* The text is ~13em wide, so 6.6cqi fills about 86% of the column. */
+  font-size: clamp(1.2rem, 6.6cqi, 2.9rem);
 }
 
 .hero-actions {
@@ -506,9 +507,10 @@ main:focus {
 
 .hero-media > img {
   width: 100%;
-  aspect-ratio: 4 / 3.3;
+  /* Wide enough for the group photo (16:9) to show all three people. */
+  aspect-ratio: 16 / 10;
   object-fit: cover;
-  object-position: 40% center;
+  object-position: center;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
 }
@@ -570,71 +572,67 @@ main:focus {
   }
 }
 
-/* ---------- Photo carousel (rolls to the right) ---------- */
-.story {
-  --story-gap: 16px;
+/* ---------- Photo slideshow (one photo at a time, fading) ---------- */
+.slideshow {
+  padding-block: clamp(24px, 4vw, 48px) 0;
+}
+
+.slideshow-frame {
+  position: relative;
+  max-width: 1000px;
+  margin-inline: auto;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
-  padding-block: clamp(20px, 3vw, 32px);
-  /* Photos fade in and out at the edges instead of being cut off sharply. */
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
-  mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  background: var(--bg-soft);
 }
 
-.story-track {
-  display: flex;
-  width: max-content;
-  animation: story-roll 60s linear infinite;
-}
-
-/* Pause while the visitor hovers over a photo, so they can look at it. */
-.story:hover .story-track {
-  animation-play-state: paused;
-}
-
-.story-set {
-  display: flex;
-  gap: var(--story-gap);
-  /* Trailing gap so the two copies join seamlessly. */
-  padding: 0 var(--story-gap) 0 0;
-  margin: 0;
-  list-style: none;
-}
-
-.story-set img {
-  width: clamp(240px, 30vw, 420px);
-  aspect-ratio: 3 / 2;
+.slideshow-frame img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-sm);
+  opacity: 0;
+  transition: opacity 1s ease;
 }
 
-/* The track holds the photos twice; moving it from -50% to 0 slides the
-   first copy exactly onto the second, so the loop never jumps. */
-@keyframes story-roll {
-  from {
-    transform: translateX(-50%);
-  }
-  to {
-    transform: translateX(0);
-  }
+.slideshow-frame img.is-active {
+  opacity: 1;
 }
 
-/* Visitors who turn off motion get a still row they can swipe through. */
-@media (prefers-reduced-motion: reduce) {
-  .story {
-    overflow-x: auto;
-    -webkit-mask-image: none;
-    mask-image: none;
-  }
+.slideshow-dots {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 12px;
+}
 
-  .story-track {
-    animation: none;
-    padding-inline: var(--gutter);
-  }
+/* 28px tap target with a small dot drawn inside it. */
+.slideshow-dots button {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
 
-  .story-set[aria-hidden='true'] {
-    display: none;
-  }
+.slideshow-dots button::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--line);
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.slideshow-dots button[aria-current='true']::after {
+  background: var(--green-700);
+  transform: scale(1.25);
 }
 
 /* ---------- Cards ---------- */
@@ -857,6 +855,39 @@ main:focus {
 .provider-card-lg .provider-avatar {
   width: 140px;
   height: 140px;
+}
+
+/* Partnering insurances (home page), shown as pills */
+.insurance-card .provider-avatar {
+  color: var(--green-700);
+}
+
+.insurance-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 4px 0 14px;
+  padding: 0;
+  list-style: none;
+}
+
+.insurance-list li {
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+  font-weight: 700;
+  color: var(--navy-900);
+}
+
+.insurance-card p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 620px) {
+  .insurance-list {
+    justify-content: center;
+  }
 }
 
 .provider-creds {

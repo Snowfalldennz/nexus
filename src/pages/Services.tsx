@@ -14,11 +14,8 @@ export function Services() {
 
   return (
     <>
-      <PageHero eyebrow="Our services" title="Primary care and wound care, at home or in our clinic">
-        <p>
-          Every service below is available as a house call for homebound patients, in assisted
-          living and group homes, or at our Chandler clinic.
-        </p>
+      <PageHero eyebrow="Our services" title="Family Medicine • Primary Care • Wound Care">
+        <p>We do both — in our clinic and in the comfort of patients’ homes.</p>
       </PageHero>
 
       <nav className="jump-nav" aria-label="Services on this page">
