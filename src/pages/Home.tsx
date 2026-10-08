@@ -30,7 +30,7 @@ export function Home() {
       <section className="hero">
         <div className="container hero-grid">
           <div className="hero-copy">
-            <p className="eyebrow">{practice.tagline}</p>
+            <p className="eyebrow eyebrow-tagline">{practice.tagline}</p>
             <h1>
               Health care at your <span className="text-accent">doorstep</span>
             </h1>

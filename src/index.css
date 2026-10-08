@@ -253,6 +253,14 @@ main:focus {
   color: var(--green-300);
 }
 
+/* The practice tagline keeps its own capitals (first letter of each word),
+   instead of the all-caps used by the other small headings. */
+.eyebrow-tagline {
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
 .section {
   padding-block: clamp(56px, 8vw, 96px);
 }
