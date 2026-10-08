@@ -498,9 +498,8 @@ main:focus {
 
 .hero-media > img {
   width: 100%;
-  /* The photo is square: show all of it, so the faces and the wound stay in
-     view and the badge only covers the supply tray in the corner. */
-  aspect-ratio: 1 / 1;
+  /* The team photo is 16:9: show all of it so no one is cropped out. */
+  aspect-ratio: 16 / 9;
   object-fit: cover;
   object-position: center;
   border-radius: var(--radius-lg);
@@ -517,25 +516,38 @@ main:focus {
   opacity: 0.25;
 }
 
-/* Sits under the photo (never on it) so it can't cover the patient or the wound. */
+/* Small badge hooked on the photo's bottom-left edge: half on the photo, half
+   below it, so it stays inside the picture's frame without covering anyone. */
+.hero-media {
+  margin-bottom: 28px;
+}
+
 .hero-badge {
-  margin-top: 14px;
+  position: absolute;
+  left: 16px;
+  bottom: 0;
+  transform: translateY(50%);
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px 18px 12px 12px;
+  gap: 10px;
+  padding: 8px 16px 8px 8px;
   background: #fff;
   border-radius: var(--radius);
   box-shadow: var(--shadow-md);
-  font-size: 0.92rem;
+  font-size: 0.82rem;
+  line-height: 1.35;
   color: var(--muted);
-  max-width: 290px;
+}
+
+.hero-badge img {
+  width: 36px;
+  height: 36px;
 }
 
 .hero-badge strong {
   display: block;
   color: var(--navy-900);
-  font-size: 1rem;
+  font-size: 0.92rem;
 }
 
 @media (max-width: 900px) {
@@ -552,7 +564,7 @@ main:focus {
   }
 
   .hero-badge {
-    max-width: none;
+    left: 10px;
   }
 }
 
