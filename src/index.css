@@ -517,10 +517,9 @@ main:focus {
   opacity: 0.25;
 }
 
+/* Sits under the photo (never on it) so it can't cover the patient or the wound. */
 .hero-badge {
-  position: absolute;
-  left: -20px;
-  bottom: 28px;
+  margin-top: 14px;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -552,12 +551,8 @@ main:focus {
     inset: 12px -10px -12px 10px;
   }
 
-  /* On small screens the badge would cover the wound and the nurse's hands,
-     so it sits under the photo instead of on top of it. */
   .hero-badge {
-    position: static;
     max-width: none;
-    margin-top: 14px;
   }
 }
 
