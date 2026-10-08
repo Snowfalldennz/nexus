@@ -14,7 +14,7 @@ export function Services() {
 
   return (
     <>
-      <PageHero eyebrow="Our services" title="Family Medicine • Primary Care • Wound Care">
+      <PageHero eyebrow="Our services" title="Family Medicine & Wound Care">
         <p>We do both — in our clinic and in the comfort of patients’ homes.</p>
       </PageHero>
 
