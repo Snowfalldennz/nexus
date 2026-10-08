@@ -5,10 +5,6 @@ export const practice = {
   name: 'Nexus Health and Wellness',
   shortName: 'Nexus Health & Wellness',
   tagline: 'Family Medicine • Primary Care • Wound Care',
-  provider: {
-    name: 'Sammy M. Nzivo',
-    credentials: 'MSN-ARNP, FNP-C',
-  },
   address: {
     street: '3002 N Arizona Ave, Ste 13',
     city: 'Chandler',
@@ -135,7 +131,6 @@ export const whoWeServe = [
 
 export const whyChooseUs = [
   { title: 'Fast order turnaround', text: 'Orders signed within 24–48 hours.' },
-  { title: 'Medicare accepted', text: 'Plus multiple private insurance plans.' },
   { title: 'Provider-led care team', text: 'Care led by a board-certified family nurse practitioner.' },
   { title: 'We come to you', text: 'House calls and clinic visits — whichever suits you.' },
 ] as const

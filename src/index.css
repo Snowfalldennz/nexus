@@ -296,15 +296,6 @@ main:focus {
   border-bottom: 1px solid var(--line);
 }
 
-.site-header::after {
-  /* Thin blue→green rule echoing the business card */
-  content: '';
-  position: absolute;
-  inset: auto 0 -1px 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--blue-700), var(--blue-500), var(--green-500));
-}
-
 .header-inner {
   display: flex;
   align-items: center;

@@ -3,7 +3,7 @@ import { CircleCheck, ShieldCheck } from 'lucide-react'
 import { CallToAction } from '../components/CallToAction'
 import { PageHero } from '../components/PageHero'
 import { serviceIcons } from '../components/icons'
-import { practice, services, whoWeServe } from '../data/site'
+import { insurances, practice, services, whoWeServe } from '../data/site'
 import { usePageMeta } from '../hooks/usePageMeta'
 
 export function Services() {
@@ -72,10 +72,10 @@ export function Services() {
           <div className="notice">
             <ShieldCheck className="notice-icon" aria-hidden="true" />
             <div>
-              <h2>Insurance</h2>
+              <h2>Partnering Insurances</h2>
               <p>
-                We accept <strong>Medicare</strong> and multiple private insurance plans. Call us
-                at <a href={practice.phone.href}>{practice.phone.display}</a> to confirm your plan
+                {insurances.join(', ')} — and more pending application. Call us at{' '}
+                <a href={practice.phone.href}>{practice.phone.display}</a> to confirm your plan
                 before your first visit.
               </p>
               <p>

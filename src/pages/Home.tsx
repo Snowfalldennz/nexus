@@ -22,7 +22,7 @@ const serveIcons = [BedDouble, Building2, Hospital]
 export function Home() {
   usePageMeta(
     '',
-    'Nexus Health and Wellness provides mobile primary care, house calls, chronic disease management, post-discharge care and advanced wound care in Chandler, Arizona. Medicare accepted.',
+    'Nexus Health and Wellness provides mobile primary care, house calls, chronic disease management, post-discharge care and advanced wound care in Chandler, Arizona.',
   )
 
   return (
